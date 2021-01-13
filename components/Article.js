@@ -88,6 +88,55 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+function articleMaker( data ){
+
+  const article = document.createElement( 'div' );
+  const h2 = document.createElement( 'h2' );
+  const p1 = document.createElement( 'p' );
+  const p2 = document.createElement( 'p' );
+  const p3 = document.createElement( 'p' );
+  const date = document.createElement( 'p' );
+  const btn = document.createElement( 'span' );
+
+  article.classList.add( 'article' );
+  date.classList.add( 'date' );
+  btn.classList.add( 'expandButton' );
+
+  h2.textContent = data.title;
+  date.textContent = data.date;
+  p1.textContent = data.firstParagraph;
+  p2.textContent = data.secondParagraph;
+  p3.textContent = data.thirdParagraph;
+  btn.textContent = "+";
+
+  btn.addEventListener( 'click', function( event ){
+    article.classList.toggle( 'article-open' );
+  })
+
+  article.appendChild(h2);
+  article.appendChild(date);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(btn);
+
+  return article;
+}
+data.push( {
+  title: "Terry\'s Article",
+  date: "Jan 13th, 2021",
+  firstParagraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper iaculis blandit. Nam id feugiat neque, sed lobortis tellus. Sed vitae mattis eros. Proin vel diam odio. Nullam in nibh odio. Vestibulum ut nisl non odio ultricies eleifend. Proin placerat volutpat libero eu dignissim. Donec nec vehicula dolor. Mauris tempus, neque nec eleifend mattis, augue dui mollis arcu, ac accumsan mauris tellus at felis. Morbi eget mi non est viverra aliquet. Pellentesque et ultricies mauris. Suspendisse dapibus sem dolor, quis auctor lectus vulputate eget. Aliquam porttitor ipsum est, a suscipit odio hendrerit id. Aenean et pellentesque lacus, porttitor sagittis nulla. Ut facilisis interdum auctor.",
+  secondParagraph: "Ut congue quam non scelerisque faucibus. Vestibulum aliquam molestie purus nec bibendum. Nulla vulputate feugiat augue, eget malesuada libero euismod nec. Praesent sollicitudin, risus condimentum sagittis ornare, nulla felis porta sem, in ultricies nisi erat vitae nibh. Vestibulum urna magna, gravida non pharetra sit amet, feugiat et lacus. Quisque quis metus lacinia, tincidunt mauris ac, convallis neque. Sed pretium arcu vel leo efficitur, a dignissim justo elementum. Aenean vitae vestibulum metus, in luctus ante. Aenean ac purus ante. Proin arcu arcu, laoreet vel rhoncus et, eleifend volutpat felis. Sed luctus tempus placerat. Donec consectetur ante ac faucibus pellentesque.",
+  thirdParagraph: "Maecenas ullamcorper libero vel tempus volutpat. Vestibulum ac condimentum diam. Donec urna lectus, viverra pretium dapibus nec, cursus viverra sem. Mauris luctus sem eu blandit lacinia. Sed luctus sit amet nunc sed bibendum. Maecenas ac ultricies nisi, id accumsan nibh. Suspendisse scelerisque consectetur enim, vitae maximus nisl mollis eget. Donec laoreet justo nec erat elementum cursus. Nunc eget cursus risus, at accumsan enim. Integer eu varius ligula. Cras sed ligula eget elit consectetur lacinia eget quis velit. Phasellus augue neque, finibus eget pretium tempus, vulputate et justo. Nullam a nisl in orci facilisis euismod ut et lorem. In ultricies semper nulla, ut dictum dui facilisis ac.",
+} )
+
+data.forEach( ( item ) =>{
+  let element = articleMaker( item );
+  let arts = document.querySelector( '.articles' );
+
+  arts.appendChild( element );
+} )
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
