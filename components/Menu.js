@@ -8,6 +8,39 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+const head = document.querySelector( '.header' );
+function menuMaker( data ){
+  const menu = document.createElement( 'div' );
+  const list = document.createElement( 'ul' );
+  const btn = document.querySelector( '.menu-button' );
+  
+  menu.classList.add( 'menu' );
+  menu.appendChild( list );
+
+  data.forEach( ( item ) => {
+    const li = document.createElement( 'li' );
+    li.textContent = item;
+
+    //custom functionality for hover
+    li.addEventListener( 'mouseover', function(){
+      li.style.backgroundColor = "#a4dca6";
+    })
+    li.addEventListener( 'mouseout', function(){
+      li.style.backgroundColor = "#81c784";
+    })
+
+    list.appendChild( li );
+
+  })
+
+  btn.addEventListener( 'click', function( event ){
+    menu.classList.toggle( 'menu--open' );
+  })
+
+  return menu;
+}
+
+head.appendChild( menuMaker( menuItems ) );
 
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
